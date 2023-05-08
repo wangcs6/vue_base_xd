@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../../vue.js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div v-for="i in list">{{i.name}}-{{i.age}}</div>
+      <button @click="change">change</button>
+    </div>
+    <script>
+      Vue.config.productionTip = false;
+      let vm = new Vue({
+        el: '#app',
+        data: {
+          list: [{ name: '张三', age: 18 }],
+        },
+        methods: {
+          change() {
+            // this.list[0].name = '李四';
+            // this.list[0].age = 20;
+            // this.list[0] = { name: '李四', age: 20 };
+            this.list.splice(0, 1, { name: '李四', age: 20 });
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

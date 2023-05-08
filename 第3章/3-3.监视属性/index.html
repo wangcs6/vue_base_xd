@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../../vue.js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      今天的计划：{{plan}}
+      <br />
+      <button @click="change">切换天气</button>
+      <br />
+      <button @click="number.a++">add{{number.a}}</button>
+      <button @click="number.b++">add2</button>
+      <!-- <button @click="number={a:11,b:22}">add3</button> -->
+    </div>
+    <script>
+      Vue.config.productionTip = false;
+      new Vue({
+        el: '#app',
+        data: {
+          plan: '',
+          isSunny: true,
+          number: {
+            a: 1,
+            b: 2,
+          },
+        },
+        watch: {
+          isSunny() {
+            this.plan = this.isSunny ? '打篮球' : '敲代码';
+          },
+          // 'number.a': {
+          //   handler() {
+          //     console.log('a改变了');
+          //   },
+          // },
+          // 'number.b': {
+          //   handler() {
+          //     console.log('b改变了');
+          //   },
+          // },
+          number() {
+            // deep: true,
+            // handler() {
+            console.log('number改变了');
+            // },
+          },
+        },
+        methods: {
+          change() {
+            this.isSunny = !this.isSunny;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

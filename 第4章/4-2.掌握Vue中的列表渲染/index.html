@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../../vue.js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 遍历字符串 -->
+      <!-- <div v-for="item in name">{{item}}</div> -->
+      <!-- 遍历数组 -->
+      <!-- <div v-for="(i,ind) in list">{{i.name}}-{{ind}}</div> -->
+      <!-- 遍历对象 -->
+      <div v-for="(i,name,index) in obj">{{name}}-{{i}}-{{index}}</div>
+    </div>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          name: '小滴课堂',
+          list: [{ name: '张三' }, { name: '李四' }, { name: '王五' }],
+          obj: {
+            name: '张三',
+            age: '18',
+            sex: '男',
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

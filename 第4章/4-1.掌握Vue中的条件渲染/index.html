@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../../vue.js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- <p v-if="dice===1">打篮球</p>
+      <p v-else-if="dice===2">敲代码</p>
+      <p v-else-if="dice===3">游泳</p> -->
+      <!-- <p v-else>约会</p> -->
+      <p v-show="dice===1">约会</p>
+      <p v-show="dice===1">约会</p>
+      <p v-show="dice===1">约会</p>
+      <p v-show="dice===1">约会</p>
+      <button @click="throwFun">扔骰子</button>
+    </div>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          dice: '',
+        },
+        methods: {
+          throwFun() {
+            this.dice = Math.floor(Math.random() * 4);
+            console.log(this.dice);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

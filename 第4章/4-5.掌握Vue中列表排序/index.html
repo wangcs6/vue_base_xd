@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../../vue.js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="inputValue" />
+      <button @click="keyWord=1">降序</button>
+      <button @click="keyWord=2">升序</button>
+      <button @click="keyWord=0">原顺序</button>
+      <ul>
+        <li v-for="item in newList">{{item.name}}-{{item.price}}</li>
+      </ul>
+    </div>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          inputValue: '',
+          keyWord: 0,
+          list: [
+            { name: '牛仔裤', price: 88 },
+            { name: '运动裤', price: 67 },
+            { name: '羽绒服', price: 128 },
+            { name: '运动服', price: 100 },
+          ],
+        },
+        computed: {
+          newList() {
+            const arr = this.list.filter((i) => {
+              return i.name.indexOf(this.inputValue) !== -1;
+            });
+            if (this.keyWord) {
+              arr.sort((a1, a2) => {
+                return this.keyWord === 2
+                  ? a1.price - a2.price
+                  : a2.price - a1.price;
+              });
+            }
+            return arr;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

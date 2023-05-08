@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../../vue.js/vue.js"></script>
+    <style>
+      .bg {
+        background-color: red;
+      }
+      .bg_b {
+        background-color: blue;
+      }
+      .fs {
+        font-size: 50px;
+      }
+      .fc {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 字符串的写法 -->
+      <!-- <div :class="bg_red" @click="change">{{name}}</div> -->
+      <!-- 对象的写法 -->
+      <!-- <div :class="obj">{{name}}</div> -->
+      <!-- 数组的写法 -->
+      <div :class="[{bg:xd}, b]">{{name}}</div>
+    </div>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          name: '小滴课堂',
+          obj: { bg_b: true, fs: true },
+          list: ['bg', 'fs', 'fc'],
+          a: 'bg',
+          b: 'fs',
+          xd: true,
+        },
+        // methods: {
+        //   change() {
+        //     this.bg_red = 'bg_b';
+        //   },
+        // },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../../vue.js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <form @submit.prevent="submit">
+        账号：<input type="text" v-model="userInfo.username" /><br /><br />
+        密码：<input type="password" v-model="userInfo.password" /><br /><br />
+        手机号：<input
+          type="number"
+          v-model.number="userInfo.phone"
+        /><br /><br />
+        性别：男<input
+          type="radio"
+          name="sex"
+          value="male"
+          v-model="userInfo.sex"
+        />
+        女
+        <input type="radio" name="sex" value="female" v-model="userInfo.sex" />
+        <br /><br />
+        方向：前端
+        <input type="checkbox" value="front" v-model="userInfo.direction" />
+        后端<input type="checkbox" value="back" v-model="userInfo.direction" />
+        测试<input type="checkbox" value="test" v-model="userInfo.direction" />
+        <br /><br />
+        地区：<select v-model="userInfo.city">
+          <option value="">请选择地区</option>
+          <option value="beijing">北京</option>
+          <option value="shanghai">上海</option>
+          <option value="guangzhou">广州</option>
+          <option value="shenzhen">深圳</option>
+        </select>
+        <br /><br />
+        备注：<textarea v-model="userInfo.remarks"></textarea><br /><br />
+        <input type="checkbox" v-model="userInfo.agree" />请阅读并接受<a
+          href="https://xdclass.net"
+          >《用户协议》</a
+        ><br /><br />
+        <button>提交</button>
+      </form>
+    </div>
+    <script>
+      Vue.config.productionTip = false;
+      new Vue({
+        el: '#app',
+        data: {
+          userInfo: {
+            username: '',
+            password: '',
+            phone: '',
+            sex: '',
+            direction: [],
+            city: '',
+            remarks: '',
+            agree: '',
+          },
+        },
+        methods: {
+          submit() {
+            console.log(this.userInfo);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../../vue.js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div :style="{fontSize:num+'px',color:red}">{{name}}</div>
+    </div>
+    <script>
+      Vue.config.productionTip = false;
+      let vm = new Vue({
+        el: '#app',
+        data: {
+          name: '小滴课堂',
+          num: 12,
+          red: '',
+        },
+        methods: {
+          change() {
+            this.red = 'red';
+          },
+        },
+        mounted() {
+          this.change();
+          setInterval(() => {
+            this.num += 0.4;
+            if (this.num >= 20) {
+              this.num = 12;
+            }
+          }, 60);
+        },
+      });
+    </script>
+  </body>
+</html>

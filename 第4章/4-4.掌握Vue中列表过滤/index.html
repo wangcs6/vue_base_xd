@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../../vue.js/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="inputValue" />
+      <ul>
+        <li v-for="i in newList">{{i.name}}-{{i.price}}</li>
+      </ul>
+    </div>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          inputValue: '',
+          list: [
+            { name: '牛仔裤', price: '88元' },
+            { name: '运动裤', price: '67元' },
+            { name: '羽绒服', price: '128元' },
+            { name: '运动服', price: '100元' },
+          ],
+        },
+        computed: {
+          newList() {
+            return this.list.filter((i) => {
+              return i.name.indexOf(this.inputValue) !== -1;
+            });
+          },
+        },
+        // watch: {
+        //   inputValue: {
+        //     immediate: true,
+        //     handler(val) {
+        //       this.newList = this.list.filter((i) => {
+        //         return i.name.indexOf(val) !== -1;
+        //       });
+        //     },
+        //   },
+        // },
+      });
+    </script>
+  </body>
+</html>

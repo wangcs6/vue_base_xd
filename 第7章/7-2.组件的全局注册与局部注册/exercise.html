@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../vue.js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>{{name}}</div>
+        <!-- <button-counter></button-counter>
+        <button-counter></button-counter>
+        <button-counter></button-counter> -->
+        <xd></xd>
+    </div>
+
+
+    <script>
+        //全局注册
+        // Vue.component('button-counter',{
+        //     data() {
+        //         return {
+        //             count: 0
+        //         }
+        //     },
+        //     template:`<button v-on:click="count++">点击了 {{ count }} 次</button>`
+        // })
+        //孙子组件
+        const aa = Vue.extend({
+            data() {
+                return {
+                    text: '南邮'
+                }
+            },
+            template: '<p>{{text}}</p>',
+        })
+
+
+        //局部注册
+        //父组件
+        const xd = Vue.extend({
+            data() {
+                return { count: 0 };
+            },
+            template: `<div>
+                <button v-on:click="count++">点击了 {{ count }} 次</button>
+                <aa></aa>
+                </div>`,
+            components: {
+                aa,
+            }
+        })
+        //爷爷组件
+        new Vue({
+            el: '#app',
+            data: {
+                name: 'njupt',
+            },
+            components: {
+                xd,   //属性名和属性值一样时我们可以简写  =>xd:xd这是完整的写法
+            }
+        })
+
+        // let aa = {a:1,b:2};
+        // let bb = aa;
+        // let cc = aa;
+    </script>
+</body>
+
+</html>
